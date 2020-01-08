@@ -41,42 +41,6 @@ class ReportUI {
         element.replaceChild(old_elm, element.childNodes[id1]);
     }
 
-
-    // set_konkyo() {
-    //     var reportK = this.report.report;
-    //     var numK = this.number;
-    //     let tempK = document.querySelector('#temp0').content;
-    //     // document.querySelector('#kon_start').addEventListener('click', () => {
-    //     //     let temp = document.querySelector('#temp0').content;
-
-    //     for (let number in reportK[numK]["konkyo"]) {
-    //         let item = reportK[numK].konkyo[number];
-    //         let content = tempK.cloneNode(true);
-    //         //根拠を入れておく
-    //         content.querySelector('.textK').value = item.k;
-    //         content.querySelector('.kk').setAttribute('id', 'kk' + number);
-    //         console.log('id', 'kk' + number);
-
-
-
-    //         //削除ボタン
-    //         content.querySelector('.delete2').addEventListener('click', (ev2) => {
-    //             //console.log(ev2.srcElement.parentNode);
-    //             let id2 = ev2.srcElement.parentNode.getAttribute('id');
-    //             //console.log(id2);
-    //             let number2 = id2.slice(2);
-    //             reportK[numK].konkyo.splice(number2, 1);
-    //             ev2.srcElement.parentNode.parentNode.removeChild(ev2.srcElement.parentNode);
-    //             //console.log(number2);
-    //         })
-    //         //document.querySelector('#kon_hontai').appendChild( content );
-    //         this.parent.appendChild(content);
-    //     }
-
-
-    //     //});
-    // }
-
     /**
      * 描述
      * @date 2019-12-13
@@ -84,6 +48,7 @@ class ReportUI {
      * @param {number} num  レポート番号    ex: 0
      * @returns {any}
      */
+
     set_qanda() {
         var report = this.report.report;
         var num = this.number;
@@ -105,6 +70,7 @@ class ReportUI {
             //移動ボタン(上)
             if (number != 0) {
                 content.querySelector('.change').addEventListener('click', (ev1) => {
+                    this,this.save_qa();
                     let chid = ev1.srcElement.parentNode.getAttribute('id');
                     let number = chid.slice(2);
                     console.log(96, report);
@@ -156,8 +122,6 @@ class ReportUI {
     }
 }
 
-
-
 class Report {
     constructor() {
         this.report = [];
@@ -172,13 +136,20 @@ class Report {
         let qa = this.report[0].qanda;
         let k = this.report[0].konkyo;
         let r = this.report[0].sankou;
-        qa.push({ q: "ほんとうによいか？", a: "構わん" });
-        qa.push({ q: "まじで？", a: "あぁ" });
-        qa.push({ q: ':||はいつ？', a: 'まだまだ' });
-        k.push({ k: '力也さん遅刻' });
-        k.push({ k: '結婚ラシュ！' });
-        r.push({ r: '参考文献のURLなどを記入' });
-        r.push({ r: '参考文献のURLなどを記入' });
+        qa.push({ q: "問いの記入１", a: "問いに対する答えの入力１" });
+        qa.push({ q: "問いの記入２", a: "問いに対する答えの入力３" });
+        //qa.push({ q: '問いの記入３', a: '問いに対する答えの入力3' });
+        k.push({ k: '根拠の記入１' });
+        k.push({ k: '根拠の記入２' });
+        r.push({ r: '参考文献のURLなどを記入１' });
+        r.push({ r: '参考文献のURLなどを記入２' });
+    }
+
+    set_data() {
+        document.querySelector('.save').addEventListener('click', () => {
+             localStorage.setItem('reminder', JSON.stringify(qa));
+         })
+
     }
 //根拠の表示
     set_konkyo( element, num ) {
