@@ -155,7 +155,7 @@
 .kon_st{
 	font-size: 20px;
 	position: absolute;
-	left: 210px;
+	left: 100px;
 
 	display: inline-block;
   	padding: 0.25em 0.5em;
@@ -219,7 +219,7 @@
 .btnpanda{
 	font-size: 20px;
 	position: absolute;
-	left: 230px;
+	left: 100px;
 
 	display: inline-block;
   	padding: 0.25em 0.5em;
@@ -320,7 +320,7 @@
 .sanst{
 	font-size: 20px;
 	position: absolute;
-	left: 170px;
+	left: 100px;
 
 	display: inline-block;
   	padding: 0.25em 0.5em;
