@@ -7,6 +7,7 @@ window.addEventListener('load', () => {
     //let remaid = new remaid(repo);
     repo.set_konkyo(document.querySelector('#kon_hontai'), 0);
     repo.set_sankou( document.querySelector('#san_hontai'), 0 );
+    repo.save(document.querySelector('.chou'),0);
 });
 class ReportUI {
     /**
@@ -143,6 +144,14 @@ class Report {
         k.push({ k: '根拠の記入２' });
         r.push({ r: '参考文献のURLなどを記入１' });
         r.push({ r: '参考文献のURLなどを記入２' });
+    }
+
+     save() {
+        document,querySelector('.save').addEventListener('click',() =>{
+            var mydata = document.querySelector('.shuchou');
+            console.log(これれは)
+            localStorage.setItem('mydata',mydata);
+        }) 
     }
 
     set_data() {
