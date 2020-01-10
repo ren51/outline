@@ -1,4 +1,4 @@
-
+@media print, screen and (min-width: 640px){
 /*ヘッダーのcss*/
 .face01hed{
     font-size: 40px;
@@ -66,4 +66,4 @@
 	background: -webkit-linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
 	background: linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
 }
-
+}
