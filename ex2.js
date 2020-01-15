@@ -1,13 +1,16 @@
 window.addEventListener('load', () => {
 
     let repo = new Report();
-    let repoUI = new ReportUI(repo, document.querySelector('#qa_hontai'), 0,  document.querySelector('#kon_hontai'));
+    let repoUI = new ReportUI(repo, document.querySelector('#qa_hontai'), 0);
     let page = new Page(["#classes", "#new_report", "#new_konkyo"], '.page');
     let pageUI = new PageUI();
     //let remaid = new remaid(repo);
     repo.set_konkyo(document.querySelector('#kon_hontai'), 0);
     repo.set_sankou( document.querySelector('#san_hontai'), 0 );
-    repo.save(document.querySelector('.chou'),0);
+
+    document.querySelector('.savebtn').addEventListener('click', () =>{
+        save();
+    });
 });
 class ReportUI {
     /**
@@ -65,10 +68,13 @@ class ReportUI {
             content.querySelector('.textQ').value = item.q;
             content.querySelector('.textA').value = item.a;
             content.querySelector('.qa').setAttribute('id', 'qa' + number);
+            content.querySelector('.textQ').setAttribute('id','qid' +number);
+            content.querySelector('.textA').setAttribute('id','aid' +number);
             //console.log('id', 'qa' + number);
+            console.log('id','aid' +number);
 
 
-            //移動ボタン(上)
+            //移動ボタン
             if (number != 0) {
                 content.querySelector('.change').addEventListener('click', (ev1) => {
                     this,this.save_qa();
@@ -138,7 +144,7 @@ class Report {
         let k = this.report[0].konkyo;
         let r = this.report[0].sankou;
         qa.push({ q: "問いの記入１", a: "問いに対する答えの入力１" });
-        qa.push({ q: "問いの記入２", a: "問いに対する答えの入力３" });
+        qa.push({ q: "問いの記入２", a: "問いに対する答えの入力２" });
         //qa.push({ q: '問いの記入３', a: '問いに対する答えの入力3' });
         k.push({ k: '根拠の記入１' });
         k.push({ k: '根拠の記入２' });
@@ -172,19 +178,20 @@ class Report {
                 //根拠を入れておく
                 content.querySelector('.textK').value = item.k;
                 content.querySelector('.kk').setAttribute('id', 'kk' + number );
+                content.querySelector('.textK').setAttribute('id','tk' + number);
                 console.log( 'id', 'kk' + number );
-                
+                console.log('id','tk'+ number);
 
 
                 //削除ボタン
                 content.querySelector('.delete2').addEventListener('click', (ev2) => {
-                    console.log( ev2.srcElement.parentNode );
+                    //console.log( "１つ目", ev2.srcElement.parentNode );
                     let id2 = ev2.srcElement.parentNode.getAttribute('id');
-                    console.log(id2);
+                    //console.log("２つ目",id2);
                     let number2 = id2.slice(2);
-                    report[num].konkyo.splice(number2,1);
+                    this.report[num].konkyo.splice(number2,1);
                     ev2.srcElement.parentNode.parentNode.removeChild(ev2.srcElement.parentNode);
-                    console.log(number2);
+                    //console.log("最後",number2);
                 })
                 //document.querySelector('#kon_hontai').appendChild( content );
                 element.appendChild( content );
@@ -205,19 +212,20 @@ class Report {
                 //根拠を入れておく
                 content.querySelector('.textS').value = item.r;
                 content.querySelector('.ss').setAttribute('id', 'ss' + number);
+                content.querySelector('.textS').setAttribute('id', 'sid' + number);
                 console.log('id', 'ss' + number);
-
+                console.log('id', 'sid' + number);
 
 
                 //削除ボタン
-                content.querySelector('.delete3').addEventListener('click', (ev2) => {
-                    console.log(ev2.srcElement.parentNode);
-                    let id2 = ev2.srcElement.parentNode.getAttribute('id');
-                    console.log(id2);
-                    let number2 = id2.slice(2);
-                    report[num].sankou.splice(number2, 1);
-                    ev2.srcElement.parentNode.parentNode.removeChild(ev2.srcElement.parentNode);
-                    console.log(number2);
+                content.querySelector('.delete3').addEventListener('click', (ev3) => {
+                    console.log(ev3.srcElement.parentNode);
+                    let id3 = ev3.srcElement.parentNode.getAttribute('id');
+                    console.log(id3);
+                    let number3 = id3.slice(2);
+                    this.report[num].sankou.splice(number3, 1);
+                    ev3.srcElement.parentNode.parentNode.removeChild(ev3.srcElement.parentNode);
+                    console.log(number3);
                 })
                 //document.querySelector('#kon_hontai').appendChild( content );
                 element.appendChild(content);
@@ -241,4 +249,22 @@ class PageUI {
             nl.emit("page", { page: '#new_report' });
         });
     }
+}
+
+function save() {
+    var Jdata = {
+        shuchou: document.querySelector('.tex').value,
+        ckonkyo: document.querySelector('.chou').value,
+        konkyo1: document.querySelector('#tk0').value,
+        konkyo2: document.querySelector('#tk1').value,
+        q1: document.querySelector('#qid0').value,
+        a1: document.querySelector('#aid0').value,
+        q1: document.querySelector('#qid1').value,
+        a1: document.querySelector('#aid1').value,
+        sankou1: document.querySelector('#sid0').value,
+        sankou2: document.querySelector('#sid1').value
+
+    };
+    localStorage.setItem("savedata", JSON.stringify(Jdata));
+    console.log("保存しました");
 }
