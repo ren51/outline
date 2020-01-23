@@ -207,6 +207,7 @@ img{
 }
 .textK{
 	font-size: 30px;
+	width: 200px;
 }
 .delete2{
 	font-size: 20px;
@@ -276,7 +277,7 @@ img{
 .textA{
 	font-size: 30px;
     padding: 1.0px 0;
-    width: auto;
+    width: 250px;
 }
 
 .toisuta{
