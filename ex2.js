@@ -84,7 +84,6 @@ class ReportUI {
                     while (this.parent.firstChild) this.parent.removeChild(this.parent.firstChild);
                     new nylon().emit('page', { page: '#new_report' })
                     console.log(report[num].qanda[number]);//確認用
-
                 });
             } else {
                 console.log(85, content.querySelector('.change'));
