@@ -70,7 +70,6 @@ class ReportUI {
             content.querySelector('.qa').setAttribute('id', 'qa' + number);
             content.querySelector('.textQ').setAttribute('id','qid' +number);
             content.querySelector('.textA').setAttribute('id','aid' +number);
-            //console.log('id', 'qa' + number);
             console.log('id','aid' +number);
 
 
@@ -80,52 +79,40 @@ class ReportUI {
                     this,this.save_qa();
                     let chid = ev1.srcElement.parentNode.getAttribute('id');
                     let number = chid.slice(2);
-                    console.log(96, report);
                     console.log(96, report[num].qanda[number]);//確認用
                     this.report.replace(report[num].qanda, number, number - 1);
                     while (this.parent.firstChild) this.parent.removeChild(this.parent.firstChild);
                     new nylon().emit('page', { page: '#new_report' })
                     console.log(report[num].qanda[number]);//確認用
-                    console.log(95, document.querySelectorAll('#qa_hontai .qa'));
 
                 });
             } else {
                 console.log(85, content.querySelector('.change'));
-                //content.removeChild( content.querySelector('.change') );
+                
             }
             // 削除ボタン
             content.querySelector('.delete').addEventListener('click', (ev) => {
-                //console.log(ev.srcElement.parentNode);
                 let id = ev.srcElement.parentNode.getAttribute('id');
-                //console.log(id);
                 let number = id.slice(2);
                 report[num].qanda.splice(number, 1);
                 ev.srcElement.parentNode.parentNode.removeChild(ev.srcElement.parentNode);
                 console.log(number);
             })
-
-            //document.querySelector('#qa_hontai').appendChild( content );
             this.parent.appendChild(content);
-            //console.log(content);
         }
-
     }
     save_qa() {
         var report = this.report.report;
         var num = this.number;
         let rep = [];
         let qa_element = document.querySelector('#qa_hontai');
-        //console.log( qa_element.querySelectorAll('.qa') );
         for (let data of qa_element.querySelectorAll('.qa')) {
             let q_text = data.querySelector('input').value;
             let a_text = data.querySelector('textarea').value;
-            //console.log( 126, q_text, a_text );
             rep.push({ q: q_text, a: a_text });
         }
-        //console.log( 130, this.report.report );
         this.report.report[num].qanda = rep;
         console.log(131, this.report.report[num].qanda);
-        //localStorage.setItem('reminder', JSON.stringify(this.report.report[num].qanda));
     }
 }
 
@@ -145,7 +132,7 @@ class Report {
         let r = this.report[0].sankou;
         qa.push({ q: "問いの記入１", a: "問いに対する答えの入力１" });
         qa.push({ q: "問いの記入２", a: "問いに対する答えの入力２" });
-        //qa.push({ q: '問いの記入３', a: '問いに対する答えの入力3' });
+        qa.push({ q: '問いの記入３', a: '問いに対する答えの入力3' });
         k.push({ k: '根拠の記入１' });
         k.push({ k: '根拠の記入２' });
         r.push({ r: '参考文献のURLなどを記入１' });
@@ -185,15 +172,11 @@ class Report {
 
                 //削除ボタン
                 content.querySelector('.delete2').addEventListener('click', (ev2) => {
-                    //console.log( "１つ目", ev2.srcElement.parentNode );
                     let id2 = ev2.srcElement.parentNode.getAttribute('id');
-                    //console.log("２つ目",id2);
                     let number2 = id2.slice(2);
                     this.report[num].konkyo.splice(number2,1);
                     ev2.srcElement.parentNode.parentNode.removeChild(ev2.srcElement.parentNode);
-                    //console.log("最後",number2);
                 })
-                //document.querySelector('#kon_hontai').appendChild( content );
                 element.appendChild( content );
             }
            
@@ -221,13 +204,10 @@ class Report {
                 content.querySelector('.delete3').addEventListener('click', (ev3) => {
                     console.log(ev3.srcElement.parentNode);
                     let id3 = ev3.srcElement.parentNode.getAttribute('id');
-                    console.log(id3);
                     let number3 = id3.slice(2);
                     this.report[num].sankou.splice(number3, 1);
                     ev3.srcElement.parentNode.parentNode.removeChild(ev3.srcElement.parentNode);
-                    console.log(number3);
                 })
-                //document.querySelector('#kon_hontai').appendChild( content );
                 element.appendChild(content);
             }
 
