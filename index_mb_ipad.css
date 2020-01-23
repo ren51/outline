@@ -1,9 +1,9 @@
 @media print, screen and (max-width: 1024px){
-    img{
-        max-width: 100%;
-        height: auto;
-        width: auto;
-	}
+img{
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
 .savediv{
 	width: 300px;
 	margin: auto;
@@ -140,9 +140,6 @@
 	font-size: 40px;
 	vertical-align: middle;
 }
-/*.ans{
-	border: solid #a19894;
-}*/
 .ansans{
 	font-size: 40px;
 	vertical-align: middle;
@@ -374,7 +371,7 @@
 }
 .textS{
 	font-size: 30px;
-	width: 60%;
+	width: 20%;
 }
 .delete3{
 	font-size: 20px;

@@ -1,4 +1,4 @@
-@media print, screen and (max-width: 480px){
+@media print, screen and (max-width: 479px){
 img{
 	max-width: 100%;
     height: auto;
@@ -77,7 +77,6 @@ img{
 }
 
 .chi02{
-	/*border: solid #800015;*/
 	flex-grow: 5;
 	text-align: center;
 	font-size: 20px;
@@ -95,9 +94,16 @@ img{
 	background: -webkit-linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
 	background: linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
 }
+.shu input{
+	vertical-align : middle;	
+}
 .chou{
     font-size: 20px;
 	vertical-align: middle;
+}
+.ul{
+	text-align: center;
+	font-size: 24px;
 }
 .kon{
 	font-size: 40px;
@@ -132,9 +138,7 @@ img{
 	background: -webkit-linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
 	background: linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
 }
-.btn{
-	font-size: 40px;
-}
+
 /*こんきょ*/
 .kon_st_div{
 	width: 300px;
@@ -200,7 +204,7 @@ img{
 /**/
 /*toioans*/
 .panda_div{
-	width: 300px;
+	width: 100px;
 	margin: auto;
 	margin-top: 10px;
 	position: relative;
@@ -244,12 +248,10 @@ img{
     margin: 2px 0px;
     
 }
-
-
-.textA{
+input.textA{
 	font-size: 20px;
     padding: 1.0px 0;
-    width: 300px;
+    width: 30%;
 }
 .toisuta{
 	font-size: 20px;
