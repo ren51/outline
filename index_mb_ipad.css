@@ -272,13 +272,18 @@ img{
     margin: 2px 0px;
     
 }
-
+.textAno{
+	font-size: 30px;
+    padding: 1.0px 0;
+    width: 100px;
+}
 
 .textA{
 	font-size: 30px;
     padding: 1.0px 0;
-    width: 500px;
+    width: 10px;
 }
+
 .toisuta{
 	font-size: 30px;
 	margin: 5px 0px;
@@ -371,7 +376,7 @@ img{
 }
 .textS{
 	font-size: 30px;
-	width: 20%;
+	width: 60%;
 }
 .delete3{
 	font-size: 20px;
